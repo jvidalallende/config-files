@@ -19,20 +19,20 @@ autocmd BufNewFile,BufReadPost *.pu set filetype=plantuml
 autocmd BufNewFile,BufReadPost *SCons* set filetype=python
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""         NERDtree         """"""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F4> :NERDTreeToggle<CR>
+" Fix problem with arrows in some terminals
+let NERDTreeDirArrows=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""       TagbarToogle       """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " This opens a side window for easy code navigation
 " Configuration based on http://amix.dk/blog/post/19329
-map <F4> :TagbarToggle<cr>
+map <F5> :TagbarToggle<cr>
 " Reduce the time required to update the tabs
 set updatetime=100
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""         NERDtree         """"""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F5> :NERDTreeToggle<CR>
-" Fix problem with arrows in some terminals
-let NERDTreeDirArrows=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""          Tabs            """"""""""""""
@@ -124,6 +124,7 @@ colorscheme solarized
 
 " Set terminal to use 16 colors instead of just 8
 set t_Co=16
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Other userful stuff    """"""""""""""
