@@ -43,3 +43,8 @@ fi
 if [ -f ~/.bash_hidden_aliases ]; then
     . ~/.bash_hidden_aliases
 fi
+
+# Enable tmux-git [https://github.com/drmad/tmux-git]
+if [[ \$TMUX ]]; then
+    source ~/GIT/tmux-git/tmux-git.sh;
+fi
