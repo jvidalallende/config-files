@@ -1,0 +1,8 @@
+[core]
+	editor = vim
+	pager = less -r
+	ui = auto
+	excludesfile = ~/.gitignore_global
+[alias]
+	co = checkout
+	st = status
