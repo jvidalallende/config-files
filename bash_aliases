@@ -14,3 +14,7 @@ alias ........='cd ../../../../../../..'
 
 alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y'
 alias tmux='TERM=screen-256color-bce tmux'
+
+if [ -f ~/.bash_hidden_aliases ]; then
+    . ~/.bash_hidden_aliases
+fi
