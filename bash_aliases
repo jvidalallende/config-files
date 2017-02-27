@@ -14,6 +14,10 @@ alias ........='cd ../../../../../../..'
 
 alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y'
 
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
 if [ -f ~/.bash_hidden_aliases ]; then
     . ~/.bash_hidden_aliases
 fi
