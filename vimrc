@@ -18,6 +18,12 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.pu set filetype=plantuml
 autocmd BufNewFile,BufReadPost *SCons* set filetype=python
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""" Remove trailing whitespaces """""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+:nnoremap <silent> <F3> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""         NERDtree         """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
