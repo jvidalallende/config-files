@@ -1,0 +1,21 @@
+/* Place this file in ~/.config/gtk-3.0/gtk.css to modify how
+ * GNOME renders the window title bars */
+
+/*  These modifications make the title bars smaller */
+.header-bar.default-decoration {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 0.8em;
+}
+
+.header-bar.default-decoration .button.titlebutton {
+  padding: 0px;
+}
+
+/* This setting adjust the height of tabs in gnome-terminal */
+TerminalWindow .notebook .button,
+TerminalWindow .notebook .button:active {
+    padding: 2 2 2 10;
+    background-image: none;
+    border: 0;
+}
