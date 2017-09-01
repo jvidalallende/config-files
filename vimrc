@@ -128,9 +128,8 @@ set statusline+=\ %P    "percent through file
 set background=dark
 colorscheme solarized
 
-" Set terminal to use 16 colors instead of just 8
-set t_Co=16
-
+" Set terminal to use 256 colors (change to 16 if this gives trouble)
+set t_Co=256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Other userful stuff    """"""""""""""
