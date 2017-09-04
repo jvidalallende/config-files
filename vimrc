@@ -1,6 +1,6 @@
 " ~/.vimrc (configuration file for vim only)
 
-" Activate Pathogen (easy install plugins by creating a 
+" Activate Pathogen (easy install plugins by creating a
 " folder in .vim/bundle. Call it before 'filetype on',
 " since they seem to conflict
 call pathogen#infect()
@@ -63,7 +63,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:clang_library_path = '/usr/lib/llvm-3.6/lib/'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
- 
+
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
          " No location/quickfix list shown, open syntastic error location panel
