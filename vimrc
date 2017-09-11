@@ -144,6 +144,9 @@ set cursorline
 set colorcolumn=80
 " Remove trailing whitespaces
 nnoremap <silent> <F3> :%s/\s\+$//<CR>
+" Enable backspace to work as in most programs (right after insert)
+set backspace=indent,eol,start
+
 " Remap navigation keys, so that we move by 'Display Lines'
 " rather than 'real lines'. Useful for wrapped lines.
 nnoremap k gk

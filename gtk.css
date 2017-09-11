@@ -15,7 +15,7 @@
 /* This setting adjust the height of tabs in gnome-terminal */
 TerminalWindow .notebook .button,
 TerminalWindow .notebook .button:active {
-    padding: 2 2 2 10;
+    padding: 2px 2px 2px 10px;
     background-image: none;
-    border: 0;
+    border: 0px;
 }
