@@ -9,7 +9,7 @@ setlocal tabstop=4
 setlocal smarttab
 
 " Vertical line
-setlocal colorcolumn=100
+setlocal colorcolumn=80
 
 " Run commands
 map <F9> :! pylint %
