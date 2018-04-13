@@ -20,14 +20,15 @@ autocmd BufNewFile,BufReadPost *SCons* set filetype=python
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""" Remove trailing whitespaces """""""""""""
+"""""" Remove tabs / trailing whitespaces """""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 :nnoremap <silent> <F3> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+:map <silent> <F4> :retab<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""         NERDtree         """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
-map <F4> :NERDTreeToggle<CR>
+map <silent> <F5> :NERDTreeToggle<CR>
 " Fix problem with arrows in some terminals
 let NERDTreeDirArrows=0
 
@@ -36,7 +37,7 @@ let NERDTreeDirArrows=0
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " This opens a side window for easy code navigation
 " Configuration based on http://amix.dk/blog/post/19329
-map <F5> :TagbarToggle<cr>
+map <F6> :TagbarToggle<cr>
 " Reduce the time required to update the tabs
 set updatetime=100
 
@@ -56,13 +57,14 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_check_header = 1
 
 " C++11 with syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:clang_library_path = '/usr/lib/llvm-3.6/lib/'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
@@ -160,4 +162,5 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
+set encoding=utf-8
 "~/.vimrc ends here
