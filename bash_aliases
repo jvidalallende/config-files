@@ -31,6 +31,40 @@ fi
 
 export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]$USER_SUFFIX"
 
+
+# Useful alias-like functions
+gr() {
+    if [ $# -ne 1 ]; then
+        echo "Invalid number of arguments: $#"
+        return 1
+    fi
+    grep -rnI "$1" .
+}
+
+gri() {
+    if [ $# -ne 1 ]; then
+        echo "Invalid number of arguments: $#"
+        return 1
+    fi
+    grep -rnIi "$1" .
+}
+
+fname() {
+    if [ $# -ne 1 ]; then
+        echo "Invalid number of arguments: $#"
+        return 1
+    fi
+    find . -name "$1"
+}
+
+finame() {
+    if [ $# -ne 1 ]; then
+        echo "Invalid number of arguments: $#"
+        return 1
+    fi
+    find . -iname "$1"
+}
+
 # Source some extra files
 
 if [ -f ~/.git-completion.bash ]; then
