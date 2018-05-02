@@ -136,6 +136,8 @@ set t_Co=256
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Other userful stuff    """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 " Show line numbers
 set number
 " line wrapping
