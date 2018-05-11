@@ -46,6 +46,3 @@
 [submodule "vim/bundle/vim-rtags"]
 	path = vim/bundle/vim-rtags
 	url = https://github.com/lyuts/vim-rtags.git
-[submodule "vim/bundle/vim-javacomplete2"]
-	path = vim/bundle/vim-javacomplete2
-	url = https://github.com/artur-shaik/vim-javacomplete2.git
