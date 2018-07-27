@@ -23,7 +23,7 @@ autocmd BufNewFile,BufReadPost *SCons* set filetype=python
 """""" Remove tabs / trailing whitespaces """""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 :nnoremap <silent> <F3> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-:map <silent> <F4> :retab<CR>
+:map <silent> <F4> :%s/\t/  /g <CR> :retab<CR> :nohl <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""         NERDtree         """"""""""""""
@@ -37,7 +37,19 @@ let NERDTreeDirArrows=0
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " This opens a side window for easy code navigation
 " Configuration based on http://amix.dk/blog/post/19329
+let g:tagbar_left=1
 map <F6> :TagbarToggle<cr>
+
+" Open it only if you're opening Vim with a supported file/files
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+
+" OpenTagbar also if you open a supported file in an already running Vim:
+autocmd FileType * nested :call tagbar#autoopen(0)
+
+" If you use multiple tabs and want Tagbar to also open in the current tab when
+" you switch to an already loaded, supported buffer:
+"autocmd BufEnter * nested :call tagbar#autoopen(0)
+
 " Reduce the time required to update the tabs
 set updatetime=100
 
@@ -58,7 +70,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_cpp_check_header = 1
 
 " C++11 with syntastic
