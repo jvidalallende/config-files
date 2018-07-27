@@ -45,3 +45,6 @@
 	path = vim/bundle/vim-rtags
 	url = https://github.com/lyuts/vim-rtags.git
         ignore = dirty
+[submodule "vim/bundle/ale"]
+	path = vim/bundle/ale
+	url = https://github.com/w0rp/ale.git
