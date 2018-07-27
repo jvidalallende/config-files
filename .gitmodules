@@ -7,6 +7,7 @@
 [submodule "vim/bundle/jedi-vim"]
 	path = vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
+        ignore = dirty
 [submodule "vim/bundle/mark"]
 	path = vim/bundle/mark
 	url = https://github.com/Tuxdude/mark.vim
