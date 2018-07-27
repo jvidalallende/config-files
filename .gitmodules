@@ -44,3 +44,4 @@
 [submodule "vim/bundle/vim-rtags"]
 	path = vim/bundle/vim-rtags
 	url = https://github.com/lyuts/vim-rtags.git
+        ignore = dirty
