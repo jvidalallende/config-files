@@ -14,6 +14,9 @@ alias ........='cd ../../../../../../..'
 
 alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y'
 
+# Force tmux to use Unicode
+alias tmux='tmux -u'
+
 # Git branch in prompt
 # Since the prompt is being modified, modify it depending on being root or not
 #  - For root, end with '# '
