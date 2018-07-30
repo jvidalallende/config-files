@@ -7,10 +7,17 @@
 
 # Images
 **.png
+**.svg
 
 # Build artifacts
 **SConstruct
 **scons_build
+**settings.yml
+**settings_YAML.yml
+**xsdsuite.py
 
 # Others
 **.syntastic_cpp_config
+**.clang_complete
+**compile_commands.json
+**.plist
