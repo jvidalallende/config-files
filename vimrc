@@ -61,22 +61,8 @@ map <C-l> :tabnext <CR>
 map <C-e> :tabe
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""        Syntastic         """"""""""""""
+"""""""""""     F2 to open errors    """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_check_header = 1
-
-" C++11 with syntastic
-let g:syntastic_cpp_compiler = 'clang++'
-let g:clang_library_path = '/usr/lib64/'
-let g:syntastic_cpp_compiler_options = ' -Wall -Werror -std=c++11'
 
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
