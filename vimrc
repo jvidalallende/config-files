@@ -63,17 +63,37 @@ map <C-e> :tabe
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""     F2 to open errors    """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
-
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
-         " No location/quickfix list shown, open syntastic error location panel
-         Errors
+        lopen
     else
         lclose
     endif
 endfunction:
 
 nnoremap <silent> <F2> :call ToggleErrors() <CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""        w0rp/ale          """"""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable completion where available.
+let g:ale_completion_enabled = 1
+let g:ale_cpp_clang_options = '-std=c++11 -Wall -Wno-deprecated'
+let g:ale_open_list = 1
+let g:ale_linters =
+  \{
+  \   'c': ['clangcheck'],
+  \   'cpp': ['clangcheck'],
+  \   'csh': ['shell'],
+  \   'go': ['gofmt', 'golint', 'go vet'],
+  \   'perl': ['perlcritic'],
+  \   'python': ['flake8', 'mypy', 'pylint'],
+  \   'rust': ['cargo'],
+  \   'zsh': ['shell'],
+  \}
+" Use this options for a synstatic-like lint-on-save instead of as typing
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Search configuration   """"""""""""""
@@ -173,4 +193,12 @@ if has("autocmd")
 endif
 
 set encoding=utf-8
+
+" Put these lines at the very end of your vimrc file.
+" " Load all plugins now.
+" " Plugins need to be added to runtimepath before helptags can be generated.
+ packloadall
+" " Load all of the helptags now, after plugins have been loaded.
+" " All messages and errors will be ignored.
+silent! helptags ALL
 "~/.vimrc ends here
