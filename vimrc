@@ -146,6 +146,13 @@ colorscheme solarized
 set t_Co=256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""" Centralized swapfiles/undo  """"""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+set directory^=$HOME/.vim/swapfiles//
+set undodir=~/.vim/undodir
+set undofile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Other userful stuff    """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -162,6 +169,9 @@ set colorcolumn=80
 nnoremap <silent> <F3> :%s/\s\+$//<CR>
 " Enable backspace to work as in most programs (right after insert)
 set backspace=indent,eol,start
+
+" Use system clipboard
+:set clipboard=unnamed
 
 " Remap navigation keys, so that we move by 'Display Lines'
 " rather than 'real lines'. Useful for wrapped lines.
