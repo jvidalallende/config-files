@@ -35,16 +35,6 @@ let NERDTreeDirArrows=0
 let g:tagbar_left=1
 map <F6> :TagbarToggle<cr>
 
-" Open it only if you're opening Vim with a supported file/files
-autocmd VimEnter * nested :call tagbar#autoopen(1)
-
-" OpenTagbar also if you open a supported file in an already running Vim:
-autocmd FileType * nested :call tagbar#autoopen(0)
-
-" If you use multiple tabs and want Tagbar to also open in the current tab when
-" you switch to an already loaded, supported buffer:
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
-
 " Reduce the time required to update the tabs
 set updatetime=100
 
