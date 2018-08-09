@@ -9,15 +9,10 @@ call pathogen#infect()
 syntax on
 filetype on
 
-" Avoiding clipboard sync improves startup times A LOT
-" http://stackoverflow.com/questions/14635295/vim-takes-a-very-long-time-to-start-up
-set clipboard=exclude:.*
-
 " Open with predefined type
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.pu set filetype=plantuml
 autocmd BufNewFile,BufReadPost *SCons* set filetype=python
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""" Remove tabs / trailing whitespaces """""""""
