@@ -12,7 +12,7 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 
-alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y'
+alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y'
 
 # Force tmux to use Unicode
 alias tmux='tmux -u'
