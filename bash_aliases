@@ -16,6 +16,12 @@ alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get a
 
 # Force tmux to use Unicode
 alias tmux='tmux -u'
+alias battery-check='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|time to empty|percentage"'
+alias folder-space='du -h --max-depth=1 2>/dev/null'
+alias docker-clean-volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
+
+# Bash only checks aliases in the first word, unless the first alias ends with space
+alias sudo='sudo '
 
 # Git branch in prompt
 # Since the prompt is being modified, modify it depending on being root or not
