@@ -129,9 +129,14 @@ set statusline+=\ %P    "percent through file
 """""""""""       Color scheme       """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme file is stored in ~/.vim/colors/solarized.vim
-"syntax enable
-set background=dark
+syntax enable
+"let g:solarized_termcolors=256
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
 colorscheme solarized
+set background=dark
+call togglebg#map("<F7>")
 
 " Set terminal to use 256 colors (change to 16 if this gives trouble)
 set t_Co=256
@@ -156,8 +161,6 @@ set nowrap
 set cursorline
 " Vertical line to show 80-characters wide
 set colorcolumn=80
-" Remove trailing whitespaces
-nnoremap <silent> <F3> :%s/\s\+$//<CR>
 " Enable backspace to work as in most programs (right after insert)
 set backspace=indent,eol,start
 
