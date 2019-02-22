@@ -23,6 +23,8 @@ alias docker-clean-volumes='docker volume ls -qf dangling=true | xargs docker vo
 # Bash only checks aliases in the first word, unless the first alias ends with space
 alias sudo='sudo '
 
+alias remove-trailing-whitespaces="git grep -I --name-only -z -e '' | xargs -0 sed -i 's/[ \t]\+\(\r\?\)$/\1/'"
+
 # Git branch in prompt
 # Since the prompt is being modified, modify it depending on being root or not
 #  - For root, end with '# '
