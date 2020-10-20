@@ -1,42 +1,45 @@
 " ~/.vimrc (configuration file for vim only)
 
-" Activate Pathogen (easy install plugins by creating a
-" folder in .vim/bundle. Call it before 'filetype on',
-" since they seem to conflict
+" Activate Pathogen. Do it before 'filetype on', since they seem to conflict
 call pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""       Global stuff       """"""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" UTF-8 encoding is almost universal
+set encoding=utf-8
+" Set terminal to use 256 colors (change to 16 if this gives trouble)
+set t_Co=256
 
 " Syntax highlighting
 syntax on
 filetype on
 
-" Open with predefined type
+" Show line numbers
+set number
+" line wrapping
+set nowrap
+" Display underline below cursor, only in current window
+set cursorline
+" Vertical line to show 80-characters wide
+set colorcolumn=80
+" Enable backspace to work as in most programs (right after insert)
+set backspace=indent,eol,start
+
+" Use system clipboard
+:set clipboard=unnamed
+
+" Centralized swapfiles
+set directory^=$HOME/.vim/swapfiles//
+set undodir=~/.vim/undodir
+set undofile
+
+" Filetype associations outside defaults
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.pu set filetype=plantuml
+autocmd BufNewFile,BufReadPost *.plantuml set filetype=plantuml
 autocmd BufNewFile,BufReadPost *SCons* set filetype=python
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""" Remove tabs / trailing whitespaces """""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-:nnoremap <silent> <F3> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-:map <silent> <F4> :%s/\t/  /g <CR> :retab<CR> :nohl <CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""         NERDtree         """"""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <F5> :NERDTreeToggle<CR>
-" Fix problem with arrows in some terminals
-let NERDTreeDirArrows=0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""       TagbarToogle       """"""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" This opens a side window for easy code navigation
-" Configuration based on http://amix.dk/blog/post/19329
-let g:tagbar_left=1
-map <F6> :TagbarToggle<cr>
-
-" Reduce the time required to update the tabs
-set updatetime=100
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""          Tabs            """"""""""""""
@@ -44,41 +47,8 @@ set updatetime=100
 map <C-k> :tabprev <CR>
 map <C-l> :tabnext <CR>
 map <C-e> :tabe
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""     F2 to open errors    """"""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ToggleErrors()
-    if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
-        lopen
-    else
-        lclose
-    endif
-endfunction:
-
-nnoremap <silent> <F2> :call ToggleErrors() <CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""        w0rp/ale          """"""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable completion where available.
-let g:ale_completion_enabled = 1
-let g:ale_cpp_clang_options = '-std=c++11 -Wall -Wno-deprecated'
-let g:ale_open_list = 1
-let g:ale_linters =
-  \{
-  \   'c': ['clangcheck'],
-  \   'cpp': ['clangcheck'],
-  \   'csh': ['shell'],
-  \   'go': ['gofmt', 'golint', 'go vet'],
-  \   'perl': ['perlcritic'],
-  \   'python': ['flake8', 'mypy', 'pylint'],
-  \   'rust': ['cargo'],
-  \   'zsh': ['shell'],
-  \}
-" Use this options for a synstatic-like lint-on-save instead of as typing
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
+" Reduce the time required to update the tabs
+set updatetime=100
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Search configuration   """"""""""""""
@@ -136,36 +106,26 @@ let g:solarized_underline=1
 let g:solarized_italic=1
 colorscheme solarized
 set background=dark
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""      F-Key Mappings      """"""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" F3 to remove trailing whitespaces
+:nnoremap <silent> <F3> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
+" F4 to replace tabs by whitespaces
+:map <silent> <F4> :%s/\t/  /g <CR> :retab<CR> :nohl <CR>
+
+" F7 to change the colorscheme (light/dark, see Solarized config)
 call togglebg#map("<F7>")
 
-" Set terminal to use 256 colors (change to 16 if this gives trouble)
-set t_Co=256
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""" Centralized swapfiles/undo  """"""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-set directory^=$HOME/.vim/swapfiles//
-set undodir=~/.vim/undodir
-set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""   Other userful stuff    """"""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
-" Show line numbers
-set number
-" line wrapping
-set nowrap
-" Display underline below cursor, only in current window
-set cursorline
-" Vertical line to show 80-characters wide
-set colorcolumn=80
-" Enable backspace to work as in most programs (right after insert)
-set backspace=indent,eol,start
-
-" Use system clipboard
-:set clipboard=unnamed
 
 " Remap navigation keys, so that we move by 'Display Lines'
 " rather than 'real lines'. Useful for wrapped lines.
@@ -179,14 +139,3 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
-
-set encoding=utf-8
-
-" Put these lines at the very end of your vimrc file.
-" " Load all plugins now.
-" " Plugins need to be added to runtimepath before helptags can be generated.
- packloadall
-" " Load all of the helptags now, after plugins have been loaded.
-" " All messages and errors will be ignored.
-silent! helptags ALL
-"~/.vimrc ends here
