@@ -1,4 +1,4 @@
-# Temp files and cached
+# Temporary or cached files
 **.swp
 **.pyc
 **.DS_Store
@@ -6,6 +6,8 @@
 **.log
 
 # Images
+**.jpg
+**.jpeg
 **.png
 **.svg
 
@@ -15,9 +17,15 @@
 **settings.yml
 **settings_YAML.yml
 **xsdsuite.py
+?/**
+cmake_build/**
+
+# VSCode
+.vscode/**
 
 # Others
 **.syntastic_cpp_config
 **.clang_complete
 **compile_commands.json
 **.plist
+
