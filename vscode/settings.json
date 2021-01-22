@@ -1,0 +1,39 @@
+{
+    // VSCode settings for Ubuntu 18.04 are placed in ${HOME}/.config/Code/User
+
+    // Opt-out telemetry
+    // https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    // Skip these files from being watched to avoid opening too many file handles
+    // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true
+    },
+    // Font configuration.
+    // Download Iosevka from https://typeof.net/Iosevka/
+    "editor.fontFamily": "'Iosevka Fixed Medium', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 16,
+    // Solarized Dark, requires extension (ginfuru.ginfuru-better-solarized-dark-theme)
+    "workbench.colorTheme": "Better Solarized Dark",
+    // Commands to skip terminal
+    // Complete list can be obtained from defaultSettings.json (Open Default Settings option)
+    "terminal.integrated.commandsToSkipShell": [
+        // Ctrl+P
+        "-workbench.action.quickOpen"
+    ],
+    "python.showStartPage": false,
+    "gitlens.blame.highlight.locations": [
+        "gutter",
+        "overview"
+    ],
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "python.languageServer": "Pylance",
+    "extensions.ignoreRecommendations": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.fontSize": 16
+}

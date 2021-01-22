@@ -22,6 +22,7 @@ cmake_build/**
 
 # VSCode
 .vscode/**
+**.code-workspace
 
 # Others
 **.syntastic_cpp_config
