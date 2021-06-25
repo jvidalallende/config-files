@@ -76,6 +76,11 @@ finame() {
     find . -iname "$1"
 }
 
+# Not aliases, but help with crazy dircolors backgrounds:
+# https://stackoverflow.com/questions/40574819/how-to-remove-dir-background-in-ls-color-output/
+LS_COLORS=$LS_COLORS:'tw=00;33:ow=01;33:'; export LS_COLORS
+
+
 # Source some extra files
 
 if [ -f ~/.git-completion.bash ]; then
