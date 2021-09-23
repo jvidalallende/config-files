@@ -15,7 +15,6 @@ alias ........='cd ../../../../../../..'
 alias upy='sudo apt-get update && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y'
 
 # Force tmux to use Unicode
-alias tmux='tmux -u'
 alias battery-check='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|time to empty|percentage"'
 alias folder-space='du -h --max-depth=1 2>/dev/null'
 alias docker-clean-volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
