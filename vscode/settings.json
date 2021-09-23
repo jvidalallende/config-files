@@ -5,6 +5,10 @@
     // https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+
+    // Ignore intrusive extension recommendations
+    "extensions.ignoreRecommendations": true,
+
     // Skip these files from being watched to avoid opening too many file handles
     // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
     "files.watcherExclude": {
@@ -12,28 +16,33 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true
     },
-    // Font configuration.
+
+    // Force writing newlines at end of file
+    "files.insertFinalNewline": true,
+
+    // Font configuration
     // Download Iosevka from https://typeof.net/Iosevka/
-    "editor.fontFamily": "'Iosevka Fixed Medium', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 16,
+    "editor.fontFamily": "'Iosevka Fixed Medium', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
+    "editor.fontSize": 18,
+    "editor.minimap.enabled": false,
+
+    // Vertical rulers
+    "editor.rulers": [80, 100],
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#224444"
+    },
+
     // Solarized Dark, requires extension (ginfuru.ginfuru-better-solarized-dark-theme)
     "workbench.colorTheme": "Better Solarized Dark",
+
     // Commands to skip terminal
     // Complete list can be obtained from defaultSettings.json (Open Default Settings option)
     "terminal.integrated.commandsToSkipShell": [
         // Ctrl+P
         "-workbench.action.quickOpen"
     ],
-    "python.showStartPage": false,
-    "gitlens.blame.highlight.locations": [
-        "gutter",
-        "overview"
-    ],
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.codeLens.enabled": false,
-    "python.languageServer": "Pylance",
-    "extensions.ignoreRecommendations": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "terminal.integrated.fontSize": 16
+    "terminal.integrated.fontSize": 16,
+
+    // Disable git, it makes VSCode too slow on large codebases
+    "git.enabled": false
 }
