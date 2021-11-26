@@ -1,11 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
-    // On Spanish keyboard ';' is mapped to 'ñ'
-    { "key": "alt+;",  "command": "workbench.action.terminal.focus" },
-    { "key": "alt+;",  "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"},
-    { "key": "ctrl+;", "command": "workbench.action.closePanel"},
+    { "key": "alt+l",  "command": "workbench.action.terminal.focus" },
+    { "key": "alt+l",  "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"},
+    { "key": "win+l", "command": "workbench.action.closePanel"},
     // This one toggles maximize of terminal window
-    { "key": "alt+m",  "command": "workbench.action.toggleMaximizedPanel", "when": "terminalFocus"}
+    { "key": "alt+m",  "command": "workbench.action.toggleMaximizedPanel", "when": "terminalFocus"},
     // Focus editor from anywhere in VSCode
     // Useful when some missing keystroke moves focus out of editor
     { "key": "alt+0",  "command": "workbench.action.focusActiveEditorGroup"}
