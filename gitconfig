@@ -13,5 +13,4 @@
     autocrlf = input
     editor = vim
     excludesfile = ~/.gitignore_global
-    pager = less -r
     ui = auto
