@@ -32,9 +32,6 @@
         "editorRuler.foreground": "#224444"
     },
 
-    // Solarized Dark, requires extension (ginfuru.ginfuru-better-solarized-dark-theme)
-    "workbench.colorTheme": "Better Solarized Dark",
-
     // Commands to skip terminal
     // Complete list can be obtained from defaultSettings.json (Open Default Settings option)
     "terminal.integrated.commandsToSkipShell": [
@@ -44,5 +41,7 @@
     "terminal.integrated.fontSize": 16,
 
     // Disable git, it makes VSCode too slow on large codebases
-    "git.enabled": false
+    "git.enabled": false,
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Solarized Dark"
 }
