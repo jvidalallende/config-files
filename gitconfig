@@ -6,7 +6,7 @@
     ll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate --numstat
     ls = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate
     pro = pull --rebase origin
-    prom = pull --rebase origin master
+    prom = pull --rebase origin main
     st = status
 
 [core]
@@ -14,3 +14,6 @@
     editor = vim
     excludesfile = ~/.gitignore_global
     ui = auto
+
+[init]
+    defaultBranch = main
