@@ -1,0 +1,18 @@
+FROM fedora:41
+
+COPY install-tools-root.sh /scripts/install-tools-root.sh
+RUN /scripts/install-tools-root.sh
+RUN groupadd --gid=1000 group1000 
+RUN useradd --uid=1000 --gid=1000 user1000
+
+USER user1000
+RUN mkdir -p /home/user1000
+WORKDIR /home/user1000
+
+# Clone the repo instead of using in-place scripts, because the setup-user.sh
+# script needs access to all other files to create links to them
+RUN git clone https://github.com/jvidalallende/config-files
+
+# Overwrite the setup script with our own, and run it
+COPY setup-user.sh ./config-files/scripts/setup-user.sh
+RUN ./config-files/scripts/setup-user.sh

@@ -3,46 +3,39 @@
 set -euo pipefail
 [[ ${SCRIPT_TRACE:-0} -eq 1 ]] && set -x
 
-# Global variables ------------------------------------------------------------
-
-SCRIPT_DIR="$(dirname "$(realpath "$0")")"
-
-# Helper functions ------------------------------------------------------------
-
-# $1: script dir
-# $2: container image to test
+# $1: absolute path to dockerfile
+# $2: image name
 run_test() {
 	local script_dir="$1"
-	local container_image="$2"
-	local container_name
-	container_name=$(echo "${container_image}" | tr ':' '-')
+	local dockerfile="$2"
+	local image_name="$3"
 
-	# Clean dangling containers from previous executions
+	# Clean dangling images from previous executions
 	# Prefer this approach over using a TRAP on errors, so that on failures the
 	# container is kept running for inspection.
-	docker kill "${container_name}" >/dev/null 2>&1 || true
-	# Sleep for 1 second for kill to succeed
-	sleep 1
+	echo "Attempting deletion of image=[${image_name}], in case it is present..."
+	docker rmi "${image_name}" >/dev/null 2>&1 || true
 
-	echo "Test image [${container_image}], container name is [${container_name}]"
-	# Allocate TTY so that containers stay up&running
-	docker run \
-		--detach \
-		--rm \
-		--tty \
-		--name="${container_name}" \
-		--volume "${script_dir}":/scripts \
-		"${container_image}" \
-		bash
-	docker exec "${container_name}" /scripts/install-tools-root.sh
-	docker kill "${container_name}"
+	echo "Test dockerfile=[${dockerfile}], image name is [${image_name}]"
+	docker buildx build \
+		--tag "${image_name}" \
+		--file "${script_dir}/${dockerfile}" \
+		"${script_dir}"
+
+	echo "----------------------------------------------------------------"
+	echo "BUILD WITH DOCKERFILE=[${dockerfile}] WAS SUCCESSFUL!!"
+	echo "----------------------------------------------------------------"
 }
 
 # Main ------------------------------------------------------------------------
 
-declare -a IMAGES=("ubuntu:24.04" "fedora:41")
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+TEST_IMAGE_NAME="test-with-docker"
+declare -a DOCKERFILES=("Dockerfile.fedora" "Dockerfile.ubuntu")
 
-for image in "${IMAGES[@]}"; do
-	run_test "${SCRIPT_DIR}" "${image}"
-	echo "----------------------------------------------------------------"
+echo "################################################################"
+for dockerfile in "${DOCKERFILES[@]}"; do
+	IMAGE_NAME="test-with-docker:${dockerfile}"
+	run_test "${SCRIPT_DIR}" "${dockerfile}" "${IMAGE_NAME}"
+	echo "################################################################"
 done
