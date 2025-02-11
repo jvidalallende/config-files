@@ -1,3 +1,11 @@
 vim/swapfiles/*
 vim/undodir/*
 vim/.netrwhist
+
+# This file is uploaded on every plugin update
+nvim/lazy-lock.json
+
+# Centralized directories for nvim swap, undo, backup
+nvim/.swp/*
+nvim/.undo/*
+nvim/.backup/*
