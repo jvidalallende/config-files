@@ -1,19 +1,19 @@
 [alias]
     co = checkout
-    lh = log -n15 --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate
-    lhl = log -n35 --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate
-    lhll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate
-    ll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate --numstat
-    ls = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] --decorate
+    lh = log -n15 --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
+    lhl = log -n35 --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
+    lhll = log --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
     pro = pull --rebase origin
     prom = pull --rebase origin main
     st = status
+    sts = status --short
 
 [core]
     autocrlf = input
     editor = vim
     excludesfile = ~/.gitignore_global
     ui = auto
+    whitespace = blank-at-eol,space-before-tab,blank-at-eof,tabwidth=4
 
 [init]
     defaultBranch = main

@@ -12,6 +12,17 @@
 **.svg
 **.webp
 
+# Binaries
+**.zip
+**.tar.gz
+**.tgz
+**.tar
+
+# Patch
+**.patch
+**.orig
+**.rej
+
 # Build artifacts
 **SConstruct
 **scons_build
@@ -34,4 +45,5 @@ cmake_build/**
 **.clang_complete
 **compile_commands.json
 **.plist
+**.bak
 
