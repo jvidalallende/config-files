@@ -22,7 +22,7 @@
 
     // Font configuration
     // Download Iosevka from https://typeof.net/Iosevka/
-    "editor.fontFamily": "'Iosevka Fixed Medium', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Iosevka Fixed Slab Medium', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "editor.fontSize": 18,
     "editor.minimap.enabled": false,
 
