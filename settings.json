@@ -1,13 +1,18 @@
 {
-    // VSCode settings for Ubuntu 18.04 are placed in ${HOME}/.config/Code/User
+    // Generic stuff -------------------------------------------------------------------------------
 
-    // Opt-out telemetry
-    // https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+    // Opt-out telemetry - https://code.visualstudio.com/docs/supporting/faq#_how-to-disable-telemetry-reporting
+    "telemetry.telemetryLevel": "off",
+    // telemetry of YAML plugin
+    "redhat.telemetry.enabled": false,
 
-    // Ignore intrusive extension recommendations
+    // Disable update prompts, auto-updates, release notes, and startup pages
+    "update.mode": "manual",
+    "update.showReleaseNotes": false,
+    "workbench.startupEditor": "none",
     "extensions.ignoreRecommendations": true,
+
+    // File settings -------------------------------------------------------------------------------
 
     // Skip these files from being watched to avoid opening too many file handles
     // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
@@ -16,21 +21,58 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true
     },
-
     // Force writing newlines at end of file
     "files.insertFinalNewline": true,
+    "explorer.confirmDelete": false,
+
+    // Window settings -----------------------------------------------------------------------------
+
+    "workbench.panel.opensMaximized": "always",
+    "window.newWindowDimensions": "maximized",
+    "window.restoreFullscreen": true,
+
+    // Editor settings -----------------------------------------------------------------------------
 
     // Font configuration
     // Download Iosevka from https://typeof.net/Iosevka/
     "editor.fontFamily": "'Iosevka Fixed Slab Medium', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "editor.fontSize": 18,
-    "editor.minimap.enabled": false,
-
     // Vertical rulers
-    "editor.rulers": [80, 100],
+    "editor.rulers": [
+        80,
+        100,
+        120,
+    ],
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "off",
+
+    "workbench.colorTheme": "Solarized Dark",
     "workbench.colorCustomizations": {
-        "editorRuler.foreground": "#224444"
+        "editorRuler.foreground": "#224444",
+        // Terminal colors customized to match solarized colorscheme
+        // https://github.com/altercation/solarized#the-values
+        //"terminal.background":"#131212",
+        //"terminal.foreground":"#dddad6",
+        "terminal.ansiBlack": "#073642",
+        //"terminal.ansiBlack": "#073662", // Original color, changed to better match VSCode UI
+        "terminal.ansiBrightBlack": "#002b36",
+        "terminal.ansiBrightBlue": "#839496",
+        "terminal.ansiBrightCyan": "#93a1a1",
+        "terminal.ansiBrightGreen": "#586e75",
+        "terminal.ansiBrightMagenta": "#6c71c4",
+        "terminal.ansiBrightRed": "#cb4b16",
+        "terminal.ansiBrightWhite": "#fdf6e3",
+        "terminal.ansiBrightYellow": "#657b83",
+        "terminal.ansiBlue": "#268bd2",
+        "terminal.ansiCyan": "#2aa198",
+        "terminal.ansiGreen": "#859900",
+        "terminal.ansiMagenta": "#d33682",
+        "terminal.ansiRed": "#dc322f",
+        "terminal.ansiWhite": "#eee8d5",
+        "terminal.ansiYellow": "#b58900"
     },
+
+    // Integrated terminal -------------------------------------------------------------------------
 
     // Commands to skip terminal
     // Complete list can be obtained from defaultSettings.json (Open Default Settings option)
@@ -38,10 +80,64 @@
         // Ctrl+P
         "-workbench.action.quickOpen"
     ],
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.enablePersistentSessions": false,
+    // This should make terminal faster
+    "terminal.integrated.gpuAcceleration": "on",
+
+    // Git -----------------------------------------------------------------------------------------
 
     // Disable git, it makes VSCode too slow on large codebases
     "git.enabled": false,
-    "explorer.confirmDelete": false,
-    "workbench.colorTheme": "Solarized Dark"
+    "git.openRepositoryInParentFolders": "never",
+
+    // Golang-specific settings
+    "go.lintOnSave": "off",
+    "go.toolsManagement.autoUpdate": true,
+    "[go]": {
+        // Gofmt will remove unused variables/imports, which can be disruptive during development
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "never"
+        }
+    },
+
+    // Broken undo/redo on vim extension, remap to use VSCode own's stack
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": [
+                "c-r"
+            ],
+            "commands": [
+                "redo"
+            ]
+        },
+    ],
+    "search.showLineNumbers": true,
+
+    // Makefile ------------------------------------------------------------------------------------
+    "makefile.configureAfterCommand": false,
+    "makefile.configureOnEdit": false,
+    "makefile.configureOnOpen": false,
+
+    // Formatters (via plugins) --------------------------------------------------------------------
+    "[shellscript]": {
+        "editor.defaultFormatter": "mkhl.shfmt"
+    },
+    "black-formatter.args": [
+        "--line-length",
+        "100"
+    ],
+
+    // VScode remote fails when Fish is login shell - https://github.com/microsoft/vscode-remote-release/issues/2509
+    "remote.SSH.useLocalServer": false,
 }
