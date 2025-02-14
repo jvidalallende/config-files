@@ -81,7 +81,6 @@
         "-workbench.action.quickOpen"
     ],
     "terminal.integrated.fontSize": 15,
-    "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.enablePersistentSessions": false,
     // This should make terminal faster
     "terminal.integrated.gpuAcceleration": "on",
