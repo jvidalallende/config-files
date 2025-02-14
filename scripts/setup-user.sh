@@ -60,8 +60,13 @@ link_config_files() {
 	_link_file "${repo_root}/vimrc" "${HOME}/.vimrc"
 	_link_file "${repo_root}/vim" "${HOME}/.vim"
 
-	mkdir -p "${HOME}/.config/Code/User"
+	mkdir -p "${HOME}/.config"
 	_link_file "${repo_root}/nvim" "${HOME}/.config/nvim"
+
+	mkdir -p "${HOME}/.config/fish/"
+	_link_file "${repo_root}/config.fish" "${HOME}/.config/fish/config.fish"
+
+	mkdir -p "${HOME}/.config/Code/User"
 	_link_file "${repo_root}/settings.json" "${HOME}/.config/Code/User/settings.json"
 	_link_file "${repo_root}/keybindings.json" "${HOME}/.config/Code/User/keybindings.json"
 
