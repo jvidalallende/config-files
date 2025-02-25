@@ -16,3 +16,5 @@ if status is-interactive
     set -gx EDITOR nvim
 end
 
+# Default location for custom user binaries
+fish_add_path ~/.local/bin
