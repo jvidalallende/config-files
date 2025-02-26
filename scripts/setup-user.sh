@@ -66,6 +66,9 @@ link_config_files() {
 	mkdir -p "${HOME}/.config/fish/"
 	_link_file "${repo_root}/config.fish" "${HOME}/.config/fish/config.fish"
 
+	mkdir -p "${HOME}/.config/ghostty/"
+	_link_file "${repo_root}/ghostty-config" "${HOME}/.config/ghostty/config"
+
 	mkdir -p "${HOME}/.config/Code/User"
 	_link_file "${repo_root}/settings.json" "${HOME}/.config/Code/User/settings.json"
 	_link_file "${repo_root}/keybindings.json" "${HOME}/.config/Code/User/keybindings.json"

@@ -1,0 +1,7 @@
+theme = "iTerm2 Solarized Dark"
+font-family = "Iosevka Fixed Semibold"
+font-size = 15
+
+cursor-style-blink = true
+cursor-color = #DDDDDD
+cursor-style = block
