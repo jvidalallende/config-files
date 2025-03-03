@@ -52,3 +52,8 @@
 
 [merge]
 	conflictstyle = zdiff3		# 3-way merge (from 2.35 onwards). Use `diff3` if lower version.
+
+# Settings that should NOT be part of version control
+
+[include]
+	path = ~/.gitconfig_private
