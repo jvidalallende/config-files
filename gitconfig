@@ -1,19 +1,54 @@
 [alias]
-    co = checkout
-    lh = log -n15 --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
-    lhl = log -n35 --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
-    lhll = log --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
-    pro = pull --rebase origin
-    prom = pull --rebase origin main
-    st = status
-    sts = status --short
+	co = checkout
+	lh = log -n15 --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
+	lhl = log -n35 --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
+	lhll = log --pretty=format:%C(yellow)%h\\ %Cgreen%cd\\ %Creset%s%Cred%d%Cblue\\ [%an] --decorate --date=iso8601-local
+	pro = pull --rebase origin
+	prom = pull --rebase origin main
+	st = status
+	sts = status --short
 
 [core]
-    autocrlf = input
-    editor = vim
-    excludesfile = ~/.gitignore_global
-    ui = auto
-    whitespace = blank-at-eol,space-before-tab,blank-at-eof,tabwidth=4
+	autocrlf = input
+	editor = vim
+	excludesfile = ~/.gitignore_global
+	ui = auto
+	whitespace = blank-at-eol,space-before-tab,blank-at-eof,tabwidth=4
+
+# Settings below inspired by: https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
+[column]
+	ui = auto			# Show stuff in columns, better use of screen real state
 
 [init]
-    defaultBranch = main
+	defaultBranch = main	 	# Default convention nowadays
+
+[commit]
+	verbose = true			# Show diff while writting commit message
+
+[branch]
+	sort = -committerdate		# Show recent branches first, insted of alphabetic order
+
+[tag]
+	sort = version:refname		# Understand versions while sorting tags, rather than alpha order
+
+[diff]
+	algorithm = histogram		# Better diff algorithm than default one
+	colorMoved = plain		# Highlight code movements
+	mnemonicPrefix = true		# Use i(index)/w(working)/c(commit) indicators instead of a/b for diffs
+	renames = true			# Detect renames
+
+[fetch]
+	prune = true			# Delete stale branches
+	pruneTags = true		# Delete stale tags
+	all = true			# Fetch all remote branches
+
+[push]
+	default = simple		# Push current branch with same name on remote (default since 2.0)
+
+[rebase]
+	autoStash = true		# Save to stash and pop out during rebase
+	updateRefs = true		# Force-update branches that point to commits being rebased
+
+[merge]
+	conflictstyle = zdiff3		# 3-way merge (from 2.35 onwards). Use `diff3` if lower version.
