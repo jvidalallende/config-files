@@ -12,3 +12,6 @@ cursor-style = block
 
 # Window
 maximize = true
+
+# Avoid prompting on exit
+confirm-close-surface = false
