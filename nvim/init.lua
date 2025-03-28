@@ -40,6 +40,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 
+-- Disable syntax highlighting (will be handled by tree-sitter)
+vim.cmd("syntax off")
+
 -- Setup lazy.nvim
 require("lazy").setup({
 
@@ -51,7 +54,7 @@ require("lazy").setup({
 	config = function(_, opts)
 	    vim.o.background = 'dark'
 	    require('solarized').setup(opts)
-	    vim.cmd.colorscheme 'solarized'
+	    vim.cmd.colorscheme('solarized')
 	end,
     },
 
@@ -60,6 +63,43 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         priority = 100, -- Load early
+	opts = {
+            highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	    },
+            indent = { enable = true },
+            ensure_installed = {
+              "bash",
+              "c",
+              "diff",
+              "html",
+              "javascript",
+              "jsdoc",
+              "json",
+              "jsonc",
+              "lua",
+              "luadoc",
+              "luap",
+              "markdown",
+              "markdown_inline",
+              "printf",
+              "python",
+              "query",
+              "regex",
+              "toml",
+              "tsx",
+              "typescript",
+              "vim",
+              "vimdoc",
+              "xml",
+              "yaml",
+            },
+	},
+	config = function(_, opts)
+	    local configs = require("nvim-treesitter.configs")
+            configs.setup(opts)
+	end,
     },
 
     -- Language Server Protocol support
