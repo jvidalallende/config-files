@@ -3,7 +3,7 @@ theme = "iTerm2 Solarized Dark"
 
 # Font
 font-family = "Iosevka Fixed Semibold"
-font-size = 15
+font-size = 16
 
 # Cursor
 cursor-style-blink = true
