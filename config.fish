@@ -10,15 +10,18 @@ if status is-interactive
     alias .....="cd ../../../../"
     alias ......="cd ../../../../../"
 
-    # Use neovim!
-    alias vi=nvim
-    alias vim=nvim
-    set -gx EDITOR nvim
+    # Use neovim if available
+    if command -q nvim
+        alias vi=nvim
+        alias vim=nvim
+        set -gx EDITOR nvim
+    end
 end
 
 # Load homebrew if present
 if test -d /opt/homebrew
     /opt/homebrew/bin/brew shellenv | source
+    set -gx HOMEBREW_NO_AUTO_UPDATE 1
 end
 
 # Default location for custom user binaries
