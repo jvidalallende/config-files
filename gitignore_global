@@ -47,3 +47,13 @@ cmake_build/**
 **.plist
 **.bak
 
+# Files typically used to save local stuff
+env.fish
+
+# Terraform
+**/.terraform.lock.hcl
+**/.terraform/**
+
+# IBM Cloud
+**/Bluemix_CLI/**
+**/ibmcloud_expire.txt
