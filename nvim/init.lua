@@ -43,6 +43,9 @@ vim.opt.hlsearch = true
 -- Disable syntax highlighting (will be handled by tree-sitter)
 vim.cmd("syntax off")
 
+-- Bash-to-fish replacement for exports, adds save&exit for quick apply
+vim.keymap.set('n', '<F4>', ':%s/export/set -gx/ | :%s/=/ / <CR><CR> | :wq <CR>', {noremap = true})
+
 -- Setup lazy.nvim
 require("lazy").setup({
 
