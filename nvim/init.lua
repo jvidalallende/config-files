@@ -46,6 +46,13 @@ vim.cmd("syntax off")
 -- Bash-to-fish replacement for exports, adds save&exit for quick apply
 vim.keymap.set('n', '<F4>', ':%s/export/set -gx/ | :%s/=/ / <CR><CR> | :wq <CR>', {noremap = true})
 
+-- Terraform files
+vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
+vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
+vim.cmd([[autocmd BufRead,BufNewFile .terraformrc,terraform.rc set filetype=hcl]])
+vim.cmd([[autocmd BufRead,BufNewFile *.tf,*.tfvars set filetype=terraform]])
+vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=json]])
+
 -- Setup lazy.nvim
 require("lazy").setup({
 
@@ -84,6 +91,7 @@ require("lazy").setup({
               "lua",
               "luadoc",
               "luap",
+              "hcl",
               "markdown",
               "markdown_inline",
               "printf",
@@ -137,3 +145,6 @@ require("lazy").setup({
     },
 })
 
+-- Terraform lsp
+require'lspconfig'.terraformls.setup{}
+require'lspconfig'.tflint.setup{}
