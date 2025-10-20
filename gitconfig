@@ -11,7 +11,7 @@
 
 [core]
 	autocrlf = input
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 	ui = auto
 	whitespace = blank-at-eol,space-before-tab,blank-at-eof,tabwidth=4
