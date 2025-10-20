@@ -2,7 +2,7 @@
 theme = "iTerm2 Solarized Dark"
 
 # Font
-font-family = "Iosevka Fixed Semibold"
+font-family = "Iosevka NFM Semibold"
 font-size = 18
 
 # Cursor
