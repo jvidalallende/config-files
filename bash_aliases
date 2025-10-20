@@ -65,6 +65,9 @@ gri() {
 LS_COLORS=$LS_COLORS:'tw=00;33:ow=01;33:'
 export LS_COLORS
 
+alias vim=nvim
+alias tf=terraform
+
 # Source some extra files
 
 [[ -f ~/.git-completion.bash ]] && source ~/.git-completion.bash
