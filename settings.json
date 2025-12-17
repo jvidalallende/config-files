@@ -35,7 +35,7 @@
 
     // Font configuration
     // Download Iosevka from https://typeof.net/Iosevka/
-    "editor.fontFamily": "'Iosevka Fixed Medium', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Iosevka NFM Semibold', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "editor.fontSize": 18,
     // Vertical rulers
     "editor.rulers": [
@@ -139,4 +139,7 @@
 
     // VScode remote fails when Fish is login shell - https://github.com/microsoft/vscode-remote-release/issues/2509
     "remote.SSH.useLocalServer": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "workbench.editor.empty.hint": "hidden",
+    "editor.stickyScroll.enabled": false,
 }
