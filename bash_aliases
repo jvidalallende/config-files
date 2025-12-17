@@ -46,7 +46,7 @@ gri() {
 	grep -rnIi "$1" .
 }
 
-tmux-all-panes() {
+tmux-all-windows() {
 	local cmd="$*"
 	local session
 	session="$(tmux display-message -p '#S')"
