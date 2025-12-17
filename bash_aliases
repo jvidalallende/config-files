@@ -29,20 +29,6 @@ alias remove-trailing-whitespaces="git grep -I --name-only -z -e '' | xargs -0 s
 alias battery-check='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|time to empty|percentage"'
 alias folder-space='du -h --max-depth=1 2>/dev/null'
 
-# Git branch in prompt
-# Since the prompt is being modified, modify it depending on being root or not
-#  - For root, end with '# '
-#  - For regular users, end with '> '
-
-parse_git_branch() {
-	git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-USER_SUFFIX='> '
-[[ $(id -u) -eq 0 ]] && USER_SUFFIX='# '
-
-export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]$USER_SUFFIX"
-
 # Useful alias-like functions
 gr() {
 	if [ $# -ne 1 ]; then
