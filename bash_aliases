@@ -46,6 +46,13 @@ gri() {
 	grep -rnIi "$1" .
 }
 
+tmux-all-panes() {
+	local cmd="$*"
+	local session
+	session="$(tmux display-message -p '#S')"
+	tmux list-windows -F "#{window_index}" | xargs -I WIN tmux send-keys -t "${session}:WIN" "${cmd}" Enter
+}
+
 # Not aliases, but help with crazy dircolors backgrounds:
 # https://stackoverflow.com/questions/40574819/how-to-remove-dir-background-in-ls-color-output/
 LS_COLORS=$LS_COLORS:'tw=00;33:ow=01;33:'
