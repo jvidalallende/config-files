@@ -49,6 +49,7 @@ cmake_build/**
 
 # Files typically used to save local stuff
 env.fish
+env.bash
 
 # Terraform
 **/.terraform.lock.hcl
