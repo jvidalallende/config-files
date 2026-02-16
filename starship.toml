@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Default = 500ms, seems short for python/node
+command_timeout = 1200
+
 format = """
 [█](red)\
 $os\
