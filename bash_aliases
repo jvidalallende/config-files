@@ -1,3 +1,18 @@
+# History control
+#
+# Do not add duplicate lines or lines starting with space into history
+HISTCONTROL=ignoreboth
+
+# Very long history
+HISTSIZE=10000000
+HISTFILESIZE=-1
+
+# Append to history file, don't overwrite
+shopt -s histappend
+# Force committing history and re-reading it on every command
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+
 # Directory listings
 alias ll='ls -alF'
 alias lh='ls -alFh'
