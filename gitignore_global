@@ -54,6 +54,7 @@ env.bash
 # Terraform
 **/.terraform.lock.hcl
 **/.terraform/**
+**terraform.tfvars
 
 # IBM Cloud
 **/Bluemix_CLI/**
