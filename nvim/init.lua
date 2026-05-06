@@ -40,12 +40,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 
--- Disable syntax highlighting (will be handled by tree-sitter)
-vim.cmd("syntax off")
-
--- Bash-to-fish replacement for exports, adds save&exit for quick apply
-vim.keymap.set('n', '<F4>', ':%s/export/set -gx/ | :%s/=/ / <CR><CR> | :wq <CR>', {noremap = true})
-
 -- Terraform files
 vim.cmd([[silent! autocmd! filetypedetect BufRead,BufNewFile *.tf]])
 vim.cmd([[autocmd BufRead,BufNewFile *.hcl set filetype=hcl]])
@@ -66,61 +60,6 @@ require("lazy").setup({
 	    require('solarized').setup(opts)
 	    vim.cmd.colorscheme('solarized')
 	end,
-    },
-
-    -- Treesitter for syntax highlighting (load early)
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        priority = 100, -- Load early
-	opts = {
-            highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	    },
-            indent = { enable = true },
-            ensure_installed = {
-              "bash",
-              "c",
-              "diff",
-              "html",
-              "javascript",
-              "jsdoc",
-              "json",
-              "jsonc",
-              "lua",
-              "luadoc",
-              "luap",
-              "hcl",
-              "markdown",
-              "markdown_inline",
-              "printf",
-              "python",
-              "query",
-              "regex",
-              "toml",
-              "tsx",
-              "typescript",
-              "vim",
-              "vimdoc",
-              "xml",
-              "yaml",
-            },
-	},
-	config = function(_, opts)
-	    local configs = require("nvim-treesitter.configs")
-            configs.setup(opts)
-	end,
-    },
-
-    -- Language Server Protocol support
-    {
-        "neovim/nvim-lspconfig", -- Base LSP configurations
-        dependencies = {
-            -- Server installation manager
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-        },
     },
 
     -- File explorer
