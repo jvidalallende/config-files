@@ -146,5 +146,5 @@ require("lazy").setup({
 })
 
 -- Terraform lsp
-require'lspconfig'.terraformls.setup{}
-require'lspconfig'.tflint.setup{}
+vim.lsp.enable("terraformls")
+vim.lsp.enable("tflint")
